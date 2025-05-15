@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"> 
+  <title>Life Line System - Terms and Conditions</title> 
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: #1a73e8;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      transition: background-color 0.3s;
+    }
+
+    .back-button i {
+      font-size: 26px;
+    }
+
+    .back-button:hover {
+      background-color: #155ab6;
+    }
+
+    .wrapper {
+      margin-left: 0;
+      padding: 80px 20px 40px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      background-color: #f8f9fa;
+    }
+
+    h2 {
+      font-size: 28px;
+      font-weight: 500;
+      color: #202124;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .terms-container {
+      width: 100%;
+      max-width: 800px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow-y: auto;
+      max-height: 400px;
+      margin-bottom: 20px;
+    }
+
+    .terms-container p, .terms-container ul {
+      font-size: 16px;
+      color: #5f6368;
+      line-height: 1.6;
+    }
+
+    .form-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group input[type="checkbox"] {
+      margin-right: 10px;
+      width: 20px;
+      height: 20px;
+    }
+
+    .submit-btn {
+      background-color: #1a73e8;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .submit-btn:hover {
+      background-color: #155ab6;
+    }
+  </style>
+</head>
+
+<body>
+  <button class="back-button" onclick="window.location.href='home.html';" title="Back to Home">
+    <i class="bx bx-arrow-back"></i>
+  </button>
+
+  <div class="wrapper">
+    <h2>Terms and Conditions</h2>
+
+    <div class="terms-container">
+      <p>Welcome to Life Line System. Please read the following terms carefully before proceeding:</p>
+      <ul>
+        <li>You must be in good health to donate blood.</li>
+        <li>All information provided must be accurate and truthful.</li>
+        <li>You agree that your data may be used for medical and donation purposes.</li>
+        <li>Donating blood is a voluntary act and should not be performed under duress.</li>
+        <li>Life Line System is not liable for any complications resulting from blood donation outside authorized facilities.</li>
+      </ul>
+    </div>
+
+  <script>
+    document.getElementById("termsForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      if (document.getElementById("agreeCheckbox").checked) {
+        alert("Thank you for agreeing to the Terms and Conditions.");
+        window.location.href = "home.html";
+      } else {
+        alert("You must agree to the terms before continuing.");
+      }
+    });
+  </script>
+</body>
+</html>

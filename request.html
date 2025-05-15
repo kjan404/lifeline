@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"> 
+  <title>Life Line System - Request Blood</title> 
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: #1a73e8;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      transition: background-color 0.3s;
+    }
+
+    .back-button i {
+      font-size: 26px;
+    }
+
+    .back-button:hover {
+      background-color: #155ab6;
+    }
+
+    .wrapper {
+      margin-left: 0;
+      padding: 80px 20px 40px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      background-color: #f8f9fa;
+    }
+
+    h2 {
+      font-size: 28px;
+      font-weight: 500;
+      color: #202124;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    form {
+      width: 100%;
+      max-width: 600px;
+      background: transparent;
+    }
+
+    .form-group {
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .form-group label {
+      font-size: 16px;
+      font-family: 'Roboto', Arial, sans-serif;
+      color: #5f6368;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      font-size: 16px;
+      font-family: 'Roboto', Arial, sans-serif;
+      color: #202124;
+      padding: 8px 4px;
+      border: none;
+      border-bottom: 2px solid #dadce0;
+      background: transparent;
+      transition: border-color 0.3s;
+      line-height: 1.5;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-bottom: 2px solid #1a73e8;
+    }
+
+    .form-group select {
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+    }
+
+    .form-group textarea {
+      resize: none;
+    }
+
+    .submit-btn {
+      background-color: #1a73e8;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+      display: block;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      background-color: #155ab6;
+    }
+  </style> 
+ </head> 
+ <body> <!-- Floating Back Button --> <button class="back-button" onclick="window.location.href='home.html';" title="Back to Home"> <i class="bx bx-arrow-back"></i> </button> <!-- Main Content --> 
+  <div class="wrapper"> 
+   <h2>Blood Request Form</h2> 
+   <form id="requestForm" action="recepient.php" method="POST">
+    <div class="form-group"> 
+      <label for="fullName">Full Name</label> 
+      <input type="text" id="fullName" name="full_name" required> 
+    </div> 
+    <div class="form-group"> 
+      <label for="age">Age</label> 
+      <input type="number" id="age" name="age" required> 
+    </div> 
+    <div class="form-group"> 
+      <label for="gender">Sex</label> 
+      <select id="gender" name="gender" required> 
+        <option value="" disabled selected>Select</option> 
+        <option value="Male">Male</option> 
+        <option value="Female">Female</option> 
+      </select> 
+    </div> 
+    <div class="form-group"> 
+      <label for="bloodType">Required Blood Type</label> 
+      <select id="bloodType" name="blood_type" required> 
+        <option value="" disabled selected>Select</option> 
+        <option value="A+">A+</option> 
+        <option value="A-">A-</option> 
+        <option value="B+">B+</option> 
+        <option value="B-">B-</option> 
+        <option value="O+">O+</option> 
+        <option value="O-">O-</option> 
+        <option value="AB+">AB+</option> 
+        <option value="AB-">AB-</option> 
+      </select> 
+    </div> 
+    <div class="form-group"> 
+      <label for="contact">Contact Number</label> 
+      <input type="tel" id="contact" name="contact_number" required> 
+    </div> 
+    <div class="form-group"> 
+      <label for="hospital">Hospital/Location</label> 
+      <input type="text" id="hospital" name="hospital_location" required> 
+    </div> 
+    <div class="form-group"> 
+      <label for="reason">Reason for Blood Request</label> 
+      <textarea id="reason" name="reason" rows="3" required></textarea> 
+    </div> 
+    <div class="form-group"> 
+      <label for="urgency">Urgency Level</label> 
+      <select id="urgency" name="urgency_level" required> 
+        <option value="" disabled selected>Select</option> 
+        <option value="Normal">Normal</option> 
+        <option value="Urgent">Urgent</option> 
+        <option value="Emergency">Emergency</option> 
+      </select> 
+    </div> 
+    <div class="form-group"> 
+      <label for="requestDate">Request Date</label> 
+      <input type="date" id="requestDate" name="request_date" required> 
+    </div> 
+    <button type="submit" class="submit-btn">Submit Blood Request</button> 
+  </form>  
+  </div> 
+  <script>
+      fetch("recepient.php", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => response.text())
+      .then(result => {
+        alert("Your blood request has been submitted successfully.");
+        window.location.href = "home.html";
+      })
+      .catch(error => {
+        console.error("Error submitting request:", error);
+        alert("An error occurred while submitting the request.");
+      });
+    </script>
+ </body>
+</html>

@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"> 
+  <link rel="stylesheet" href="style.css"> 
+  <title>Life Line System</title> 
+  <style>
+.admin-btn-container {
+    font-size: 15px;
+    font-weight: 500;
+    width: 80px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.4);
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    border-radius: 30px;
+    text-align: center;
+    line-height: 35px;
+    text-decoration: none;
+    color: black;
+    border: none;
+    z-index: 1000;
+}
+.admin-btn-container:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+    </style> 
+ </head> 
+ <body> 
+  <div class="wrapper"> 
+   <nav class="nav"> 
+    <div class="nav-logo"> 
+     <p>Hello World | Life Line System</p> 
+    </div> 
+    <div class="nav-button"> <button class="btn white-btn" id="loginBtn" onclick="login()">Sign In</button> <button class="btn" id="registerBtn" onclick="register()">Sign Up</button> 
+    </div> 
+    <div class="nav-menu-btn"> <i class="bx bx-menu" onclick="myMenuFunction()"></i> 
+    </div> 
+   </nav> <!-- Form box ---------------------------------> 
+   <div class="form-box"> <!-- login form ------------------------> 
+    <div class="login-container" id="login"> 
+     <div class="top"> <span>Don't have an account? <a href="#" onclick="register()">Sign up</a></span> 
+      <header>
+       Log in
+      </header> 
+     </div> 
+     <form action="login.php" method="POST"> 
+      <div class="input-box"> 
+       <input type="text" name="email" class="input-field" placeholder="Username or Email" required> <i class="bx bx-user"></i> 
+      </div> 
+      <div class="input-box"> 
+       <input type="password" name="password" class="input-field" placeholder="Password" id="login-password" required> <i class="bx bx-show toggle-password" id="toggle-login-password"></i> 
+      </div> 
+      <div class="input-box"> 
+       <input type="submit" class="submit" value="Sign In"> 
+      </div> 
+      <div class="two-col"> 
+       <div class="one"> 
+       </div> 
+       <div class="two"> <label><a href="forgot-password.php">Forgot password?</a>
+       </div> 
+      </div> 
+     </form> 
+    </div> <!-- registration form ------------------------> 
+    <div class="register-container" id="register"> 
+     <div class="top"> <span>Have an account? <a href="#" onclick="login()">Log in</a></span> 
+      <header>
+       Sign up
+      </header> 
+     </div> 
+     <form action="register.php" method="POST"> 
+      <div class="two-forms"> 
+       <div class="input-box"> 
+        <input type="text" name="firstname" class="input-field" placeholder="Firstname" required> <i class="bx bx-user"></i> 
+       </div> 
+       <div class="input-box"> 
+        <input type="text" name="lastname" class="input-field" placeholder="Lastname" required> <i class="bx bx-user"></i> 
+       </div> 
+      </div> 
+      <div class="input-box"> 
+       <input type="email" name="email" class="input-field" placeholder="Email" required> <i class="bx bx-envelope"></i> 
+      </div> 
+      <div class="input-box"> 
+       <input type="password" name="password" class="input-field" placeholder="Password" id="register-password" required> <i class="bx bx-show toggle-password" id="toggle-register-password"></i> 
+      </div> 
+      <div class="input-box"> 
+       <input type="submit" class="submit" value="Register"> 
+      </div> 
+      <div class="two-col"> 
+       <div class="one"> 
+        <input type="checkbox" id="register-check"> <label for="register-check"> Remember Me</label> 
+       </div> 
+       <div class="two"> <label><a href="#">Terms &amp; conditions</a></label> 
+       </div> 
+      </div> 
+     </form> 
+    </div> 
+   </div> 
+  </div> <!-- Admin button fixed in bottom right --> 
+  <div class="admin-btn-container"> <!-- Admin button fixed in bottom right -->
+<a href="admin_login.html" class="admin-btn-container">Admin</a>
+ 
+  </div> <!-- Forgot password form --> 
+  <div class="forgot-password-container" id="forgotPassword" style="display: none;"> 
+   <div class="top"> <span>Remembered your password? <a href="#" onclick="login()">Log in</a></span> 
+    <header>
+     Reset Password
+    </header> 
+   </div> 
+   <form action="forgot-password.php" method="POST"> 
+    <div class="input-box"> 
+     <input type="email" name="email" class="input-field" placeholder="Enter your email" required> <i class="bx bx-envelope"></i> 
+    </div> 
+    <div class="input-box"> 
+     <input type="submit" class="submit" value="Reset Password"> 
+    </div> 
+   </form> 
+  </div> 
+  <script>
+    function myMenuFunction() {
+        var i = document.getElementById("navMenu");
+        if (i.className === "nav-menu") {
+            i.className += " responsive";
+        } else {
+            i.className = "nav-menu";
+        }
+    }
+
+    var a = document.getElementById("loginBtn");
+    var b = document.getElementById("registerBtn");
+    var x = document.getElementById("login");
+    var y = document.getElementById("register");
+    var z = document.getElementById("forgotPassword");
+
+    function login() {
+        x.style.display = "block";
+        y.style.display = "none";
+        z.style.display = "none";
+        x.style.left = "4px";
+        y.style.right = "-520px";
+        a.className = "btn white-btn";
+        b.className = "btn";
+        x.style.opacity = 1;
+        y.style.opacity = 0;
+    }
+
+    function register() {
+        x.style.display = "none";
+        y.style.display = "block";
+        z.style.display = "none";
+        x.style.left = "-510px";
+        y.style.right = "5px";
+        a.className = "btn";
+        b.className = "btn white-btn";
+        x.style.opacity = 0;
+        y.style.opacity = 1;
+    }
+
+    function showForgotPassword() {
+        x.style.display = "none";
+        y.style.display = "none";
+        z.style.display = "block";
+    }
+
+    window.onload = function () {
+        login();
+    }
+
+    const loginToggle = document.getElementById("toggle-login-password");
+    const loginPassword = document.getElementById("login-password");
+
+    loginToggle.addEventListener("click", () => {
+        const type = loginPassword.getAttribute("type") === "password" ? "text" : "password";
+        loginPassword.setAttribute("type", type);
+        loginToggle.classList.toggle("bx-show");
+        loginToggle.classList.toggle("bx-hide");
+    });
+
+    const registerToggle = document.getElementById("toggle-register-password");
+    const registerPassword = document.getElementById("register-password");
+
+    registerToggle.addEventListener("click", () => {
+        const type = registerPassword.getAttribute("type") === "password" ? "text" : "password";
+        registerPassword.setAttribute("type", type);
+        registerToggle.classList.toggle("bx-show");
+        registerToggle.classList.toggle("bx-hide");
+    });
+</script> 
+ </body>
+</html>

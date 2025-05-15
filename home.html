@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lifeline System - Home</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    .top-bar {
+      position: relative;
+      background-color: #fff;
+      padding: 10px 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .logout-btn {
+      position: absolute;
+      top: 50px;
+      right: 30px;
+      padding: 10px 20px;
+      background-color: #d33f49;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-decoration: none;
+    }
+
+    .logout-btn:hover {
+      background-color: #a82f3a;
+    }
+
+    .welcome-section {
+      padding: 50px;
+      text-align: center;
+      background: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .welcome-section h1 {
+      font-size: 50px;
+      color: #d33f49;
+    }
+
+    .welcome-section p {
+      font-size: 40px;
+      color: #555;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 40px;
+      background-color: #e2dfdf;
+    }
+
+    .feature-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .feature-box {
+      width: 310px;
+      padding: 30px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .feature-box h2 {
+      color: #d33f49;
+      font-size: 24px;
+    }
+
+    .feature-box p {
+      color: #000000;
+      font-size: 16px;
+    }
+
+    .modal {
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .modal-content h2 {
+      color: #d33f49;
+      margin-bottom: 20px;
+    }
+
+    .modal-content ul {
+      text-align: left;
+      margin-bottom: 20px;
+      padding-left: 20px;
+    }
+
+    .modal-content label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .modal-footer {
+      text-align: center;
+    }
+
+    #agree-checkbox {
+      margin-right: 10px;
+    }
+
+    #continue-btn {
+      background-color: #d33f49;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: not-allowed;
+      opacity: 0.6;
+      transition: all 0.3s;
+    }
+
+    #continue-btn.enabled {
+      cursor: pointer;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Modal -->
+  <div class="modal" id="termsModal">
+    <div class="modal-content">
+      <h2>Welcome to Lifeline System</h2>
+      <ul>
+        <li>You must be in good health to donate blood.</li>
+        <li>All information provided must be accurate and truthful.</li>
+        <li>You agree that your data may be used for medical and donation purposes.</li>
+        <li>Donating blood is a voluntary act and should not be performed under duress.</li>
+        <li>Lifeline System is not liable for any complications resulting from blood donation outside authorized facilities.</li>
+      </ul>
+      <label>
+        <input type="checkbox" id="agree-checkbox"> I agree to the Terms and Conditions
+      </label>
+      <div class="modal-footer">
+        <button id="continue-btn" disabled>Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="top-bar">
+    <a href="login.html" class="logout-btn" id="logout-link">Logout</a>
+  </div>
+
+  <div class="welcome-section">
+    <h1>Welcome to the Lifeline System</h1>
+    <p>Join us in our mission to save lives!</p>
+  </div>
+
+  <div class="features">
+    <a href="risk.html" class="feature-link">
+      <div class="feature-box">
+        <h2>Risks &amp; Complications</h2>
+        <p>Some people have allergic reactions to blood...</p>
+      </div>
+    </a>
+    <a href="stock.html" class="feature-link">
+      <div class="feature-box">
+        <h2>Blood Stock</h2>
+        <p>View current blood stock availability in our system.</p>
+      </div>
+    </a>
+    <a href="donor.html" class="feature-link">
+      <div class="feature-box">
+        <h2>Become a Donor</h2>
+        <p>Register easily and help those in need by donating blood.</p>
+      </div>
+    </a>
+    <a href="request.html" class="feature-link">
+      <div class="feature-box">
+        <h2>Request Blood</h2>
+        <p>Looking for blood? Find donors quickly through our system.</p>
+      </div>
+    </a>
+    <a href="about.html" class="feature-link">
+      <div class="feature-box">
+        <h2>About Us</h2>
+        <p>About Lifeline Integrated Blood Donation & Request Platform.</p>
+      </div>
+    </a>
+  </div>
+
+  <script>
+    const modal = document.getElementById('termsModal');
+    const checkbox = document.getElementById('agree-checkbox');
+    const continueBtn = document.getElementById('continue-btn');
+    const logoutLink = document.getElementById('logout-link');
+
+    window.onload = function() {
+      const agreed = localStorage.getItem('agreedToTerms');
+      if (!agreed) {
+        modal.style.display = 'flex';
+      }
+    };
+
+    checkbox.addEventListener('change', function () {
+      if (this.checked) {
+        continueBtn.disabled = false;
+        continueBtn.classList.add('enabled');
+      } else {
+        continueBtn.disabled = true;
+        continueBtn.classList.remove('enabled');
+      }
+    });
+
+    continueBtn.addEventListener('click', function () {
+      localStorage.setItem('agreedToTerms', 'true');
+      modal.style.display = 'none';
+    });
+
+    logoutLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      localStorage.removeItem('agreedToTerms');
+      window.location.href = 'login.html';
+    });
+  </script>
+
+</body>
+</html>

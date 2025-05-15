@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"> 
+  <title>Life Line System - Blood Stock</title> 
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: #1a73e8;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      transition: background-color 0.3s;
+    }
+
+    .back-button i {
+      font-size: 26px;
+    }
+
+    .back-button:hover {
+      background-color: #155ab6;
+    }
+
+    .wrapper {
+      margin-left: 0;
+      padding: 80px 20px 40px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      background-color: #f8f9fa;
+    }
+
+    h2 {
+      font-size: 28px;
+      font-weight: 500;
+      color: #202124;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .stock-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .blood-box {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-weight: 500;
+      font-size: 18px;
+      height: 120px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .blood-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .low {
+      background-color: #f39c12;
+      color: white;
+    }
+
+    .none {
+      background-color: #e74c3c;
+      color: white;
+    }
+
+    .good {
+      background-color: #2ecc71;
+      color: white;
+    }
+  </style> 
+ </head> 
+ <body> <!-- Floating Back Button --> <button class="back-button" onclick="window.location.href='home.html';" title="Back to Home"> <i class="bx bx-arrow-back"></i> </button> <!-- Main Content --> 
+  <div class="wrapper"> 
+   <h2>Available Blood Stock</h2> 
+   <div class="stock-grid" id="bloodStock"></div> 
+  </div> 
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const container = document.getElementById("bloodStock");
+
+  // Define all blood types with default 0
+  const allTypes = {
+    "A+": 0, "A-": 0,
+    "B+": 0, "B-": 0,
+    "O+": 0, "O-": 0,
+    "AB+": 0, "AB-": 0
+  };
+
+  // Fetch current stock from server
+  fetch("donor.php")
+    .then(response => response.json())
+    .then(data => {
+      // Overwrite default values with actual values from backend
+      for (let type in data) {
+        if (allTypes.hasOwnProperty(type)) {
+          allTypes[type] = data[type];
+        }
+      }
+
+      // Generate boxes for all blood types
+      for (let [type, amount] of Object.entries(allTypes)) {
+        const box = document.createElement("div");
+        box.classList.add("blood-box");
+
+        if (amount === 0) {
+          box.classList.add("none");
+        } else if (amount <= 2) {
+          box.classList.add("low");
+        } else {
+          box.classList.add("good");
+        }
+
+        box.innerHTML = `<div>${type}</div><div>${amount} Bag/s</div>`;
+        container.appendChild(box);
+      }
+    })
+    .catch(error => {
+      console.error("Error fetching blood stock:", error);
+      container.innerHTML = "<p>Failed to load blood stock data.</p>";
+    });
+});
+</script>
+ </body>
+</html>

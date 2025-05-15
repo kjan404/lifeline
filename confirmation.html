@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <title>Blood Bank</title>
+</head>
+<body>
+
+    <div class="wrapper">
+        <nav class="nav">
+            <div class="nav-logo">
+                <p>Registration Successful</p>
+            </div>
+        </nav>
+
+        <div class="input-box">
+            <input type="submit" class="submit" value="Continue" onclick="redirectToInfoHub()">
+        </div>
+        <div class="input-box">
+            <input type="submit" class="submit" value="Cancel" onclick="redirectToHome()">
+        </div>
+    </div>
+
+    <script>
+        function redirectToInfoHub() {
+            window.location.href = "login.html"; // Update this with the actual page name
+        }
+
+        function redirectToHome() {
+            window.location.href = "login.html"; // Update this with your actual homepage filename
+        }
+
+        function myMenuFunction() {
+            var i = document.getElementById("navMenu");
+            if (i.className === "nav-menu") {
+                i.className += " responsive";
+            } else {
+                i.className = "nav-menu";
+            }
+        }
+    </script>
+
+</body>
+</html>
